@@ -126,3 +126,6 @@ Every PR must include a LangSmith trace URL and tradeoff reasoning.
 | API | FastAPI (streaming SSE + sync endpoints) |
 | Database | Supabase (agent state persistence) |
 | Frontend | Next.js + React |
+
+## StudentBuddy
+A personalized AI study coach for university students preparing for exams.
