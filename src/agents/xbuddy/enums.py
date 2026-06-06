@@ -18,18 +18,8 @@ class RouterDirective(str, Enum):
 
 
 class SectionID(str, Enum):
-    """Your agent's section identifiers.
-
-    TODO: Rename these to match your domain.
-    For example, if you're building StudentBuddy:
-      GOALS = "goals"
-      SCHEDULE = "schedule"
-      RESOURCES = "resources"
-      STUDY_PLAN = "study_plan"
-      REVIEW = "review"
-    """
-    SECTION_1 = "section_1"
-    SECTION_2 = "section_2"
-    SECTION_3 = "section_3"
-    SECTION_4 = "section_4"
-    SECTION_5 = "section_5"
+    COURSE_INFO = "course_info"
+    MATERIALS = "materials"
+    KNOWLEDGE_CHECK = "knowledge_check"
+    SCHEDULE = "schedule"
+    STUDY_PLAN = "study_plan"

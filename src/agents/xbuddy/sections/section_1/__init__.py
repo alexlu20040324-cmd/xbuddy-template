@@ -1,37 +1,39 @@
-"""Section 1 — TODO: rename this section.
-
-Reference: https://github.com/Victoria824/FounderBuddy/blob/main/src/agents/founder_buddy/sections/mission/__init__.py
-
-TODO: Define your SectionTemplate here with:
-  - section_id: SectionID.SECTION_1
-  - name: human-readable name
-  - description: what this section covers
-  - system_prompt_template: the prompt that guides the LLM in this section
-  - validation_rules: what fields are required
-  - required_fields: list of field names
-  - next_section: SectionID.SECTION_2 (or None for the last section)
-"""
+"""Section 1 — Course Info: gather university, course name, and course code."""
 
 from ...enums import SectionID
-from ..base_prompt import SectionTemplate
+from ..base_prompt import SectionTemplate, ValidationRule
 
 SECTION_1_TEMPLATE = SectionTemplate(
-    section_id=SectionID.SECTION_1,
-    name="Section 1",
-    description="TODO: describe what this section covers",
+    section_id=SectionID.COURSE_INFO,
+    name="Course Info",
+    description="Identify the course the student is preparing for.",
     system_prompt_template="""
-TODO: Write the system prompt for this section.
+You are StudentBuddy, a friendly AI exam prep coach.
 
-In this section, you need to gather:
-1. ...
-2. ...
-3. ...
+In this section, gather the following from the student:
+1. University name
+2. Course name
+3. Course code (e.g. CS101)
 
 Guidelines:
 - Ask one question at a time
-- Once you have all elements, present a summary
+- Be warm and encouraging
+- Once you have all three, present a summary and ask if it's correct
 """,
-    validation_rules=[],
-    required_fields=[],
-    next_section=SectionID.SECTION_2,
+    validation_rules=[
+        ValidationRule(
+            field_name="university",
+            rule_type="required",
+            value=True,
+            error_message="Please provide your university name.",
+        ),
+        ValidationRule(
+            field_name="course_name",
+            rule_type="required",
+            value=True,
+            error_message="Please provide your course name.",
+        ),
+    ],
+    required_fields=["university", "course_name", "course_code"],
+    next_section=SectionID.MATERIALS,
 )
