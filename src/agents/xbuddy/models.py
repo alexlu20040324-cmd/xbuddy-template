@@ -48,7 +48,12 @@ class XBuddyData(BaseModel):
       available_hours_per_week: int
       preferred_subjects: list[str]
     """
-    pass
+
+    learning_goals: list[str] = Field(default_factory=list)
+    current_level: str | None = None
+    available_hours_per_week: int | None = None
+    preferred_subjects: list[str] = Field(default_factory=list)
+    uploaded_notes: list[str] = Field(default_factory=list)
 
 
 class ChatAgentDecision(BaseModel):
@@ -125,6 +130,6 @@ class XBuddyState(MessagesState):
     error_count: int = 0
     last_error: str | None = None
 
-    # Final output — TODO: rename to match your domain
+    # Final output — study plan / practice problems / summary
     final_output: str | None = None
     should_generate_final_output: bool = False
