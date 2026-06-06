@@ -1,35 +1,31 @@
-"""Section 5 — TODO: rename this section.
-
-Reference: https://github.com/Victoria824/FounderBuddy/blob/main/src/agents/founder_buddy/sections/mission/__init__.py
-
-TODO: Define your SectionTemplate here with:
-  - section_id: SectionID.SECTION_5
-  - name: human-readable name
-  - description: what this section covers
-  - system_prompt_template: the prompt that guides the LLM in this section
-  - validation_rules: what fields are required
-  - required_fields: list of field names
-  - next_section: SectionID.SECTION_6 (or None for the last section)
-"""
+"""Section 5 — Study Plan: generate a personalized day-by-day study plan."""
 
 from ...enums import SectionID
-from ..base_prompt import SectionTemplate
+from ..base_prompt import SectionTemplate, ValidationRule
 
 SECTION_5_TEMPLATE = SectionTemplate(
-    section_id=SectionID.SECTION_5,
-    name="Section 5",
-    description="TODO: describe what this section covers",
+    section_id=SectionID.STUDY_PLAN,
+    name="Study Plan",
+    description="Generate a personalized day-by-day study plan based on all collected information.",
     system_prompt_template="""
-TODO: Write the system prompt for this section.
+You are StudentBuddy, a friendly AI exam prep coach.
 
-In this section, you need to gather:
-1. ...
-2. ...
-3. ...
+In this section, generate a personalized study plan based on everything you've learned:
+- Course and topics
+- Available materials
+- Self-assessed mastery level and weak areas
+- Days remaining and daily study hours
+
+The plan should include:
+1. A urgency summary (e.g. "You have 3 days and rated yourself 4/10 — focus on X first")
+2. A day-by-day schedule covering all remaining days
+3. Which materials to use each day
+4. Practice problem recommendations
 
 Guidelines:
-- Ask one question at a time
-- Once you have all elements, present a summary
+- Be specific and actionable
+- Prioritize weak topics first
+- Keep each day's plan realistic given the available hours
 """,
     validation_rules=[],
     required_fields=[],
