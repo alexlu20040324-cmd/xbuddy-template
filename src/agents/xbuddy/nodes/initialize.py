@@ -25,7 +25,7 @@ async def initialize_node(state: XBuddyState, config: RunnableConfig) -> XBuddyS
     thread_id = state.get("thread_id") or configurable.get("thread_id", state["thread_id"])
 
     # Set default section and router directive if not already set
-    current_section = state.get("current_section") or SectionID.SECTION_1
+    current_section = state.get("current_section") or SectionID.COURSE_INFO
     router_directive = state.get("router_directive") or RouterDirective.NEXT
 
     logger.info(
