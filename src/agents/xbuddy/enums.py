@@ -15,11 +15,11 @@ class RouterDirective(str, Enum):
     STAY = "stay"
     NEXT = "next"
     MODIFY = "modify"  # Format: "modify:section_id"
-
+    
 
 class SectionID(str, Enum):
-    COURSE_INFO = "course_info"
-    MATERIALS = "materials"
-    KNOWLEDGE_CHECK = "knowledge_check"
-    SCHEDULE = "schedule"
-    STUDY_PLAN = "study_plan"
+    TARGET_ROLE = "target_role"
+    BACKGROUND = "background"
+    GAP_ANALYSIS = "gap_analysis"
+    CONSTRAINTS = "constraints"
+    RESUME_TIPS = "resume_tips"
