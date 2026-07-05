@@ -41,19 +41,41 @@ class ContextPacket(BaseModel):
 class XBuddyData(BaseModel):
     """Domain-specific data collected from the user.
 
-    TODO: Replace these fields with data relevant to your domain.
-    For example, StudentBuddy might have:
-      learning_goals: list[str]
-      current_level: str
-      available_hours_per_week: int
-      preferred_subjects: list[str]
+    JobBuddy: career-path agent for job seekers who know their target
+    role but not how to get there.
     """
 
-    learning_goals: list[str] = Field(default_factory=list)
-    current_level: str | None = None
-    available_hours_per_week: int | None = None
-    preferred_subjects: list[str] = Field(default_factory=list)
-    uploaded_notes: list[str] = Field(default_factory=list)
+    # Section 1 — TARGET_ROLE
+    job_title: str | None = None
+    job_motivation: str | None = None
+    work_type: str | None = None            # "full-time", "internship"
+    location_preference: str | None = None  # "remote", "Canada", etc.
+
+    # Section 2 — BACKGROUND
+    education: str | None = None
+    experience_years: float | None = None
+    experience_summary: str | None = None
+    skills: list[str] = Field(default_factory=list)
+    projects: list[str] = Field(default_factory=list)
+
+    # Section 3 — GAP_ANALYSIS
+    skills_match: list[str] = Field(default_factory=list)
+    skills_missing: list[str] = Field(default_factory=list)
+    skills_improve: list[str] = Field(default_factory=list)
+    gap_confirmed: bool = False
+
+    # Section 4 — CONSTRAINTS
+    timeline_months: int | None = None
+    weekly_hours: float | None = None
+    has_budget: bool | None = None
+    other_constraints: str | None = None
+
+    # Section 5 — RESUME_TIPS
+    has_resume: bool | None = None
+    resume_weaknesses: str | None = None
+    resume_highlight: str | None = None
+    has_linkedin: bool | None = None
+    has_github: bool | None = None
 
 
 class ChatAgentDecision(BaseModel):
@@ -109,7 +131,7 @@ class XBuddyState(MessagesState):
     thread_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
 
     # Navigation and progress
-    current_section: SectionID = SectionID.SECTION_1
+    current_section: SectionID = SectionID.TARGET_ROLE
     context_packet: ContextPacket | None = None
     section_states: dict[str, SectionState] = Field(default_factory=dict)
     router_directive: str = RouterDirective.NEXT
