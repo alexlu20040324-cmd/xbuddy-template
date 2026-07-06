@@ -1,7 +1,7 @@
 """Tests for JobBuddy's XBuddyData and XBuddyState models (PR 1)."""
 
-from src.agents.xbuddy.enums import SectionID
-from src.agents.xbuddy.models import XBuddyData, XBuddyState
+from agents.xbuddy.enums import SectionID
+from agents.xbuddy.models import XBuddyData, XBuddyState
 
 
 def test_xbuddy_data_defaults():
