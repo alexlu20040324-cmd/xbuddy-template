@@ -2,9 +2,9 @@
 
 import pytest
 
-from src.agents.xbuddy.enums import RouterDirective, SectionID
-from src.agents.xbuddy.models import XBuddyState
-from src.agents.xbuddy.nodes.initialize import initialize_node
+from agents.xbuddy.enums import RouterDirective, SectionID
+from agents.xbuddy.models import XBuddyState
+from agents.xbuddy.nodes.initialize import initialize_node
 
 
 @pytest.mark.asyncio
